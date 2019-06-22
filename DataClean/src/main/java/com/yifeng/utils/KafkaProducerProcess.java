@@ -3,6 +3,8 @@ package com.yifeng.utils;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,6 +18,9 @@ import java.util.concurrent.TimeUnit;
  * simulate source of input messages for flink engine
  */
 public class KafkaProducerProcess {
+
+    public static final Logger LOG = LoggerFactory.getLogger(KafkaProducerProcess.class);
+
     public static void main(String[] args) throws Exception {
         // initialize kafka producer
         Properties prop = new Properties();
@@ -31,7 +36,7 @@ public class KafkaProducerProcess {
         // produce msgs
         while (true) {
             String message = "{\"dt\":\"" + getCurrentTime() + "\",\"countryCode\":\"" + getCountryCode() + "\",\"data\":[{\"type\":\"" + getRandomType() + "\",\"score\":" + getRandomScore() + ",\"level\":\"" + getRandomLevel() + "\"},{\"type\":\"" + getRandomType() + "\",\"score\":" + getRandomScore() + ",\"level\":\"" + getRandomLevel() + "\"}]}";
-            System.out.println(message);
+            LOG.info("current msg is: {}", message);
             producer.send(new ProducerRecord<>(topic, message));  //send msg to kafka
             TimeUnit.SECONDS.sleep(2);
         }

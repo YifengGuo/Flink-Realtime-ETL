@@ -27,6 +27,9 @@ import java.util.Properties;
  *
  * bin/kafka-topics.sh  --create --topic allData --zookeeper localhost:2181 --partitions 5 --replication-factor 1
  * bin/kafka-topics.sh  --create --topic allDataClean --zookeeper localhost:2181 --partitions 5 --replication-factor 1
+ *
+ * run by script
+ * flink run -m localhost:6123 -d /data/soft/jars/DataClean/DataClean-1.0-SNAPSHOT-jar-with-dependencies.jar
  */
 public class DataClean {
 
@@ -34,7 +37,7 @@ public class DataClean {
         // get env
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-//        env.setParallelism(1);
+        env.setParallelism(5);  // sync with kafka topic partitions num
 
         //  config of checkpoint
         env.enableCheckpointing(60000);
