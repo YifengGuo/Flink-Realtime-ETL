@@ -1,4 +1,4 @@
-package com.yifeng.utils;
+package com.yifeng.dataclean.utils;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;

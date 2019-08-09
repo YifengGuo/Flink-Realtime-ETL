@@ -1,8 +1,8 @@
-package com.yifeng;
+package com.yifeng.dataclean;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.yifeng.source.MyRedisSource;
+import com.yifeng.dataclean.source.MyRedisSource;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.datastream.DataStream;

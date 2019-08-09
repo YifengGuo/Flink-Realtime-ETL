@@ -1,4 +1,4 @@
-package com.yifeng.source;
+package com.yifeng.dataclean.source;
 
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import org.slf4j.Logger;
